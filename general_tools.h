@@ -18,8 +18,10 @@ std::uniform_real_distribution<double> dd(0, 1.0);
 
 double rdm(int n)
 {
-    re.seed(clock()+dd(re));
-	return dd(re);
+   re.seed(clock()+dd(re));
+	double r=dd(re);
+	cout<<r<<endl;
+	return r;
 }
 
 template <typename T>
