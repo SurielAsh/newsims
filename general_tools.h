@@ -20,7 +20,7 @@ double rdm(int n)
 {
    re.seed(clock()+dd(re));
 	double r=dd(re);
-	cout<<r<<endl;
+	std::cout<<r<<std::endl;
 	return r;
 }
 
