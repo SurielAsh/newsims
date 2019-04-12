@@ -15,7 +15,7 @@ using std::vector;
 void fw(int Gmax,int gen,double &w)
 {
     gen++;
-    w=exp(-gen);
+    w=1/sqrt(gen);
 }
 
 class ptl
@@ -125,7 +125,7 @@ int ptl::fit(vector<int> pos)
 
         if(pos[i+1]>pos[i]&&(m[i+1][pos[i+1]-1]==0||m[i][pos[i]+1]==0))
         {
-           route-=1;
+           route-=2;
 
             if(pos[i+1]-pos[i]==1)
                 cut-=1;
@@ -133,7 +133,7 @@ int ptl::fit(vector<int> pos)
     }
     reg+=n-1-pos[n-1];
     route+=pos[0]+n-1-pos[n-1];
-    return Fit=route+cut;
+    return Fit=route+2*reg+3*cut;
 }
 
 int ptl::fit()
@@ -154,7 +154,7 @@ int ptl::fit()
 
         if(pos[i+1]>pos[i]&&(m[i+1][pos[i+1]-1]==0||m[i][pos[i]+1]==0))
         {
-            route-=1;
+            route-=2;
 
             if(pos[i+1]-pos[i]==1)
                 cut-=1;
@@ -162,6 +162,6 @@ int ptl::fit()
     }
     reg+=n-1-pos[n-1];
     route+=pos[0]+n-1-pos[n-1];
-    return Fit=route+cut;
+    return Fit=route+2*reg+3*cut;
 }
 #endif //NEWPTL_PTL_TOOLS_H
