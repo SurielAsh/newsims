@@ -12,10 +12,12 @@
 
 using std::vector;
 
-void fw(int Gmax,int gen,double &w)
+double fw(int Gmax,int gen)
 {
-    gen++;
-    w=1/sqrt(gen);
+   // gen++;
+    double w;
+    w=sqrt(((double)Gmax-(double)gen)/(double)Gmax);
+    return w;
 }
 
 class ptl

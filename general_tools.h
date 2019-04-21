@@ -13,17 +13,22 @@
 
 using std::vector;
 
-std::default_random_engine re;
+/*std::default_random_engine re;
 std::uniform_real_distribution<double> dd(0, 1.0);
 
 double rdm(int n)
 {
-   re.seed(clock()+dd(re));
+    re.seed(clock());
 	double r=dd(re);
-	std::cout<<r<<std::endl;
+	//std::cout<<r<<std::endl;
 	return r;
+}*/
+double rdm(int N)
+{
+    srand(clock()+rand());
+    double r=rand()%(N)/(double)(N);
+    return r;
 }
-
 template <typename T>
 void vini(vector<T> &v,T par,int n)
 {

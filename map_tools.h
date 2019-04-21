@@ -12,17 +12,23 @@ using std::vector;
 
 class map
 {
-    int n;
     Matrix self;
 public:
+    int n;
     vector<double>& operator[](int i) {return self[i];}
     map()= default;
     map(int n):n(n){Matrix temp(n,n);self=temp;}
+    void mini(int t)
+    {
+        Matrix temp(t,t);
+        self=temp;
+        n=t;
+    }
     void shwmap()
     {
-        for(int x=0;x!=n;x++)
+        for(int x=0;x<n;x++)
         {
-            for(int y=0;y!=n;y++)
+            for(int y=0;y<n;y++)
             {
                 if(self[x][y]==1)
                     std::cout<<"▇|";
@@ -36,15 +42,12 @@ public:
     }
     void rdmmkmap()
     {
-        for(int x=0;x!=n;x++)
+        for(auto &v:self)
         {
-            for(int y=0;y!=n;y++)
+            for(auto &a:v)
             {
-                double r=rdm(1);
-                if(r>0.97)
-                    self[x][y]=1;
-                else
-                    self[x][y]=0;
+                if(rdm(99)>0.87)
+                    a=1;
             }
         }
         self[0][0]=0;

@@ -5,23 +5,24 @@
 #include "map_tools.h"
 #include "ptl_tools.h"
 #include "mltrd.h"
+#include "file_tools.h"
 using namespace std;
 
 int main() {
     int n,Gmax,e1,e2,num;
     double w;
     //******************
-    n=15;
+    //n=5;
     Gmax=10000;
-    e1=3;
-    e2=3;
-    num=50;
+    e1=2;
+    e2=2;
+    num=20;
     w=1;
     //******************
     cout<<"粒子数为"<<num<<endl;
 
-    map map1(n);
-    map1.rdmmkmap();
+    map map1=fmkmap();
+    n=map1.n;
     map1.shwmap();
     cout<<endl;
 
@@ -34,23 +35,23 @@ int main() {
     {
         vptl.push_back(gbest);
     }
-    Dprt0(vptl);
-    //for(int i=0;i<num;i++) {
-    	//vptl[i].ini();
-    //}
+    //Dprt0(vptl);
+    for(int i=0;i<num;i++) {
+    	vptl[i].ini();
+    }
 
 
     for(int gen=0;gen<Gmax;gen++)
     {
-        cout<<"第 "<<gen<<" 代,gbest适应度为"<<gbest.fit()<<endl;
+       cout<<"第 "<<gen<<" 代,gbest适应度为"<<gbest.fit()<<endl;
         for (int i = 0; i < num; i++) {
             bool b = (vptl[i].fit() <= gbest.fit());
             if (b == 1)
                 gbest.pos = vptl[i].pos;
-            //vptl[i].updt(w,gbest);
+            vptl[i].updt(w,gbest);
         }
-        update0(vptl,w,gbest);
-        fw(Gmax,gen,w);
+       // update0(vptl,w,gbest);
+        w=fw(Gmax,gen);
         //map temp=map1;
         //for(int i=0;i<n;i++)
         //{
