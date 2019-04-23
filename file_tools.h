@@ -27,7 +27,7 @@ map fmkmap() {
             temp[x][y]=idata;
             if(y<n)
                 y++;
-            else
+            else if(x<n)
             {
                 y=0;
                 x++;
